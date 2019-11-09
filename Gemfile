@@ -28,6 +28,8 @@ gem "webpacker", "~> 4.0"
 gem "oj"
 gem "jb"
 gem "devise"
+gem "money-rails", "~>1.12"
+gem "rolify"
 
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", ">= 1.4.2", require: false

@@ -104,6 +104,15 @@ GEM
     mini_mime (1.0.2)
     mini_portile2 (2.4.0)
     minitest (5.13.0)
+    monetize (1.9.2)
+      money (~> 6.12)
+    money (6.13.4)
+      i18n (>= 0.6.4, <= 2)
+    money-rails (1.13.3)
+      activesupport (>= 3.0)
+      monetize (~> 1.9.0)
+      money (~> 6.13.2)
+      railties (>= 3.0)
     msgpack (1.3.1)
     multi_json (1.14.1)
     nio4r (2.5.2)
@@ -163,6 +172,7 @@ GEM
       railties (>= 5.0)
     reverse_markdown (1.3.0)
       nokogiri
+    rolify (5.2.0)
     rspec-core (3.9.0)
       rspec-support (~> 3.9.0)
     rspec-expectations (3.9.0)
@@ -259,11 +269,13 @@ DEPENDENCIES
   devise
   jb
   listen (>= 3.0.5, < 3.2)
+  money-rails (~> 1.12)
   oj
   pg (>= 0.18, < 2.0)
   puma (~> 4.1)
   rails (~> 6.0.1)
   rails-erd
+  rolify
   rspec-rails (~> 3.9)
   sass-rails (>= 6)
   shoulda-matchers
