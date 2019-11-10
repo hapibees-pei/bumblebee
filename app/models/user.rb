@@ -24,7 +24,10 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable,
   # :rememberable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :validatable
+         :recoverable, :validatable,
+         :jwt_authenticatable, jwt_revocation_strategy: JwtBlacklist
+  # https://github.com/waiting-for-dev/devise-jwt#session-storage-caveat
+  self.skip_session_storage = [:http_auth, :params_auth]
 
   has_many :apiaries
   has_many :fundings
