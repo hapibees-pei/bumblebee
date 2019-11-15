@@ -12,5 +12,17 @@ Rails.application.routes.draw do
     }
   end
 
+  namespace :api do
+    namespace :v1 do
+      namespace :beekeeper do
+        resources :apiaries, only: [:index] do
+          resources :hives, only: [:index]
+        end
+      end
+      namespace :beelover do
+      end
+    end
+  end
+
   root to: "page#index", defaults: { format: :json }
 end

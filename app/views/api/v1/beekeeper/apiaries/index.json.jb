@@ -1,0 +1,12 @@
+json = {
+  apiaries: []
+}
+@apiaries.each do |a|
+  j = {
+    id: a.id,
+    location: a.location
+  }
+  json[:apiaries].push(j)
+end
+
+json
