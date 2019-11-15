@@ -1,0 +1,4 @@
+json = {
+  name: @resource.name,
+  email: @resource.email
+}

@@ -12,6 +12,7 @@
 /tmp/*
 !/log/.keep
 !/tmp/.keep
+/*.json
 
 # Ignore uploaded files in development.
 /storage/*

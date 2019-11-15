@@ -33,9 +33,4 @@ class User < ApplicationRecord
   has_many :fundings
   has_many :hives, through: :fundings
 
-  validates :name,
-    length: { maximum: 200 }
-
-  validates :address,
-    length: { maximum: 240 }
 end
