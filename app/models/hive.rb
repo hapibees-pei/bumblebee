@@ -22,5 +22,5 @@ class Hive < ApplicationRecord
   has_many :fundings
   belongs_to :apiary
 
-  enum status: { healthy: 0, destroyed: 1 }
+  enum state: { healthy: 0, perished: 1 }
 end
