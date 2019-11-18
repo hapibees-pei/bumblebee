@@ -21,5 +21,8 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it { should have_many(:apiaries) }
+  it { should have_many(:fundings) }
+  it { should validate_length_of(:name).is_at_most(200) }
+  it { should validate_length_of(:address).is_at_most(240).allow_nil }
 end

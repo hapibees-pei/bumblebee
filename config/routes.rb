@@ -16,7 +16,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       namespace :beekeeper do
         resources :apiaries, only: [:index] do
-          resources :hives, only: [:index]
+          resources :hives, only: [:index, :create, :show, :update, :destroy]
         end
       end
       namespace :beelover do
