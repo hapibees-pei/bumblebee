@@ -1,0 +1,9 @@
+json = {
+  "errors":
+  [
+    {
+      "status": "401",
+      "title": "Unauthorized"
+    }
+  ]
+}
