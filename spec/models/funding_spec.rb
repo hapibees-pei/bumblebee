@@ -20,5 +20,8 @@
 require 'rails_helper'
 
 RSpec.describe Funding, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it { should belong_to(:hive) }
+  it { should belong_to(:user) }
+  it { should define_enum_for(:status).with_values({ cart: 0, pending: 1, completed: 2 }) }
+  it { validate_numericality_of(:price_cents).is_greater_than(0) }
 end

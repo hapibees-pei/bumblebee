@@ -21,5 +21,7 @@
 require 'rails_helper'
 
 RSpec.describe Hive, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it { should have_many(:fundings) }
+  it { should belong_to(:apiary) }
+  it { should define_enum_for(:status).with_values({ healthy: 0, perished: 1 }) }
 end

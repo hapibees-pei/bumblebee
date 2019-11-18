@@ -1,15 +1,12 @@
 module Api
   class ApplicationController < ActionController::API
+    include ExceptionHandler
     include ActionController::MimeResponds
     include Pundit
     respond_to :json
 
     def verify_beekeeper
-      if current_user
-        if !current_user.has_role?(:beekeeper)
-          # TODO: HTTP 401
-        end
-      end
+      render :unauthorized if current_user && !current_user.has_role?(:beekeeper)
     end
 
     def authenticate_bee!
