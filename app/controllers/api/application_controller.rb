@@ -10,5 +10,11 @@ module Api
         end
       end
     end
+
+    def authenticate_bee!
+      unless current_user
+        render "api/v1/errors/401", status: 401
+      end
+    end
   end
 end
