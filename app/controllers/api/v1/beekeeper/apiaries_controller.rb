@@ -6,8 +6,7 @@ module Api
         before_action :verify_beekeeper
 
         def index
-          # TODO: authorization for self apiaries
-          @apiaries = Apiary.all # current_user.apiaries
+          @apiaries = policy_scope(Apiary)
         end
       end
     end
