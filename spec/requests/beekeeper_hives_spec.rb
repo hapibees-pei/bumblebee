@@ -1,6 +1,6 @@
-require 'rails_helper'
+require "rails_helper"
 
-RSpec.describe 'Beekeeper Hives API', type: :request do
+RSpec.describe "Beekeeper Hives API", type: :request do
   let!(:user) { create(:user) }
   let!(:apiary) { create(:apiary, user_id: user.id) }
   let(:apiary_id) { apiary.id }
@@ -8,52 +8,52 @@ RSpec.describe 'Beekeeper Hives API', type: :request do
   let(:hive_id) { hives.first.id }
   let(:headers) { authenticated_header(user) }
 
-  describe 'GET /hives' do
+  describe "GET /hives" do
     before { get "/api/v1/beekeeper/apiaries/#{apiary_id}/hives", params: {}, headers: headers }
 
-    it 'returns hives' do
+    it "returns hives" do
       expect(json).not_to be_empty
-      expect(json['hives'].size).to eq(10)
+      expect(json["hives"].size).to eq(10)
     end
 
-    it 'returns status code 200' do
+    it "returns status code 200" do
       expect(response).to have_http_status(200)
     end
   end
 
-  describe 'GET /hives/:id' do
+  describe "GET /hives/:id" do
     before { get "/api/v1/beekeeper/apiaries/#{apiary_id}/hives/#{hive_id}", params: {}, headers: headers }
 
-    context 'when the record exists' do
-      it 'returns the hive' do
+    context "when the record exists" do
+      it "returns the hive" do
         expect(json).not_to be_empty
-        expect(json['id']).to eq(hive_id)
+        expect(json["id"]).to eq(hive_id)
       end
 
-      it 'returns status code 200' do
+      it "returns status code 200" do
         expect(response).to have_http_status(200)
       end
     end
 
-    context 'when the record does not exist' do
+    context "when the record does not exist" do
       let(:hive_id) { 100 }
 
-      it 'returns status code 404' do
+      it "returns status code 404" do
         expect(response).to have_http_status(404)
       end
 
-      it 'returns a not found message' do
-        expect(json['message']).to match("Couldn\'t find Hive with 'id'=#{hive_id}")
+      it "returns a not found message" do
+        expect(json["errors"].first["title"]).to match("Not Found")
       end
     end
   end
 
-  describe 'POST /hives' do
+  describe "POST /hives" do
     let(:valid_attributes) do
       {
         hive: {
-          name: 'BeeMaker',
-          description: 'Lots os bees',
+          name: "BeeMaker",
+          description: "Lots os bees",
           bee_number: 100,
           sensor_id: 50,
           status: :healthy,
@@ -62,38 +62,38 @@ RSpec.describe 'Beekeeper Hives API', type: :request do
       }.to_json
     end
 
-    context 'when the request is valid' do
+    context "when the request is valid" do
       before { post "/api/v1/beekeeper/apiaries/#{apiary_id}/hives", params: valid_attributes, headers: headers }
 
-      it 'creates a hive' do
-        expect(json['name']).to eq('BeeMaker')
+      it "creates a hive" do
+        expect(json["name"]).to eq("BeeMaker")
       end
 
-      it 'returns status code 201' do
+      it "returns status code 201" do
         expect(response).to have_http_status(201)
       end
     end
 
-    context 'when the request is invalid' do
-      before { post "/api/v1/beekeeper/apiaries/#{apiary_id}/hives", params: { title: 'Foobar' }.to_json, headers: headers }
+    context "when the request is invalid" do
+      before { post "/api/v1/beekeeper/apiaries/#{apiary_id}/hives", params: { title: "Foobar" }.to_json, headers: headers }
 
-      it 'returns status code 422' do
+      it "returns status code 422" do
         expect(response).to have_http_status(422)
       end
 
-      it 'returns a validation failure message' do
-        expect(response.body)
-          .to match('param is missing or the value is empty: hive')
+      it "returns a validation failure message" do
+        expect(json["errors"].first["title"])
+          .to match("Unprocessable Entity")
       end
     end
   end
 
-  describe 'PUT /hives/:id' do
+  describe "PUT /hives/:id" do
     let(:valid_attributes) do
       {
         hive: {
-          name: 'BeeMaker',
-          description: 'Lots os bees',
+          name: "BeeMaker",
+          description: "Lots os bees",
           bee_number: 100,
           sensor_id: 50,
           status: :healthy,
@@ -102,23 +102,23 @@ RSpec.describe 'Beekeeper Hives API', type: :request do
       }.to_json
     end
 
-    context 'when the record exists' do
+    context "when the record exists" do
       before { put "/api/v1/beekeeper/apiaries/#{apiary_id}/hives/#{hive_id}", params: valid_attributes, headers: headers }
 
-      it 'updates the record' do
+      it "updates the record" do
         expect(response.body).not_to be_empty
       end
 
-      it 'returns status code 200' do
+      it "returns status code 200" do
         expect(response).to have_http_status(200)
       end
     end
   end
 
-  describe 'DELETE /hives/:id' do
+  describe "DELETE /hives/:id" do
     before { delete "/api/v1/beekeeper/apiaries/#{apiary_id}/hives/#{hive_id}", params: {}, headers: headers }
 
-    it 'returns status code 200' do
+    it "returns status code 200" do
       expect(response).to have_http_status(200)
     end
   end
