@@ -1,0 +1,9 @@
+json = {
+  "errors":
+  [
+    {
+      "status": "422",
+      "title": "Unprocessable Entity"
+    }
+  ]
+}
