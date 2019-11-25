@@ -10,6 +10,7 @@ module ExceptionHandler
   end
 
   private
+
   def unprocessable_entity
     json_response("api/v1/errors/unprocessable_entity", :unprocessable_entity)
   end

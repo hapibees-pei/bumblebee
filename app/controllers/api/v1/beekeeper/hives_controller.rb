@@ -3,7 +3,6 @@ module Api
     module Beekeeper
       class HivesController < Api::ApplicationController
         before_action :authenticate_bee!
-        before_action :verify_beekeeper
 
         def index
           @apiary = Apiary.find(params[:apiary_id])
