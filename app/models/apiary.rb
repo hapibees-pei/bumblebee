@@ -4,10 +4,10 @@
 #
 #  id         :uuid             not null, primary key
 #  gateway_id :uuid
-#  location   :string
 #  user_id    :uuid
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  location   :jsonb            default("\"{}\""), not null
 #
 # Indexes
 #
@@ -18,4 +18,6 @@
 class Apiary < ApplicationRecord
   has_many :hives
   belongs_to :user
+
+  validates :location, presence: true
 end
