@@ -13,6 +13,7 @@ module Api
           @apiary = Apiary.find(params[:apiary_id])
           @hive = Hive.new(hive_params)
           @hive.apiary_id = @apiary.id
+          authorize @hive
 
           if @hive.save
             render status: :created
@@ -27,11 +28,15 @@ module Api
 
         def update
           @hive = Hive.find(params[:id])
+          authorize @hive
+
           @hive.update(hive_params)
         end
 
         def destroy
           @hive = Hive.find(params[:id])
+          authorize @hive
+
           @hive.update(status: :perished)
         end
 

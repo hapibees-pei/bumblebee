@@ -7,6 +7,8 @@ module ExceptionHandler
     rescue_from ActiveRecord::RecordInvalid, with: :unprocessable_entity
 
     rescue_from ActionController::ParameterMissing, with: :unprocessable_entity
+
+    rescue_from Pundit::NotAuthorizedError, with: :unauthorized
   end
 
   def unprocessable_entity
@@ -15,6 +17,10 @@ module ExceptionHandler
 
   def not_found
     json_response("api/v1/errors/not_found", :not_found)
+  end
+
+  def unauthorized
+    json_response("api/v1/errors/unauthorized", :unauthorized)
   end
 
   private
