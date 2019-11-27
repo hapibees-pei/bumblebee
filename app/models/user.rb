@@ -29,9 +29,13 @@ class User < ApplicationRecord
   # https://github.com/waiting-for-dev/devise-jwt#session-storage-caveat
   self.skip_session_storage = [:http_auth, :params_auth]
 
+  attr_accessor :role
+
   has_many :apiaries
   has_many :fundings
   #has_many :hives, through: :fundings
+
+  after_create :add_beerole
 
   validates :name,
     length: { maximum: 200 }
@@ -39,4 +43,28 @@ class User < ApplicationRecord
   validates :address,
     length: { maximum: 240 },
     allow_nil: true
+
+  validate :valid_role
+
+  private
+
+  def valid_role
+    if !verify_role?(self.role)
+      errors.add(:role, "needs to be a beelover or a beekeeper")
+    end
+  end
+
+  def add_beerole
+    if verify_role?(role)
+      self.add_role(role.to_sym)
+    end
+  end
+
+  def verify_role?(role)
+    if role == "beelover" || role == "beekeeper"
+      true
+    else
+      false
+    end
+  end
 end
