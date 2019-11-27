@@ -8,6 +8,8 @@ RSpec.describe "Beekeeper Hives API", type: :request do
   let(:hive_id) { hives.first.id }
   let(:headers) { authenticated_header(user) }
 
+  before { user.add_role(:beekeeper) }
+
   describe "GET /hives" do
     before { get "/api/v1/beekeeper/apiaries/#{apiary_id}/hives", params: {}, headers: headers }
 
