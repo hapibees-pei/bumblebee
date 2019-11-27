@@ -9,8 +9,6 @@ module ExceptionHandler
     rescue_from ActionController::ParameterMissing, with: :unprocessable_entity
   end
 
-  private
-
   def unprocessable_entity
     json_response("api/v1/errors/unprocessable_entity", :unprocessable_entity)
   end
@@ -18,6 +16,8 @@ module ExceptionHandler
   def not_found
     json_response("api/v1/errors/not_found", :not_found)
   end
+
+  private
 
   def json_response(path, status = :ok)
     render path, status: status
