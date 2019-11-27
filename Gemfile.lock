@@ -189,6 +189,9 @@ GEM
       railties (>= 5.0)
     reverse_markdown (1.3.0)
       nokogiri
+    rgeo (2.1.1)
+    rgeo-geojson (2.1.1)
+      rgeo (>= 1.0.0)
     rolify (5.2.0)
     rspec-core (3.9.0)
       rspec-support (~> 3.9.0)
@@ -300,6 +303,8 @@ DEPENDENCIES
   rack-cors
   rails (~> 6.0.1)
   rails-erd
+  rgeo
+  rgeo-geojson
   rolify
   rspec-rails (~> 3.9)
   sass-rails (>= 6)

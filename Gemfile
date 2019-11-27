@@ -33,6 +33,8 @@ gem "money-rails", "~>1.12"
 gem "rolify"
 gem "rack-cors"
 gem "pundit"
+gem "rgeo"
+gem "rgeo-geojson"
 
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", ">= 1.4.2", require: false
