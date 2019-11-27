@@ -11,8 +11,14 @@ module Api
 
         def create
           @apiary = Apiary.find(params[:apiary_id])
-          @hive = Hive.create!(hive_params.merge(apiary_id: @apiary.id))
-          render status: :created
+          @hive = Hive.new(hive_params)
+          @hive.apiary_id = @apiary.id
+
+          if @hive.save
+            render status: :created
+          else
+            unprocessable_entity
+          end
         end
 
         def show
