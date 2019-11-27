@@ -3,7 +3,6 @@ module Api
     module Beekeeper
       class ApiariesController < Api::ApplicationController
         before_action :authenticate_user!
-        before_action :verify_beekeeper
 
         def index
           @apiaries = policy_scope(Apiary)

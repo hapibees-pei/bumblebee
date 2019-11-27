@@ -1,0 +1,9 @@
+json = {
+  id: @hive.id,
+  name: @hive.name,
+  description: @hive.description,
+  bee_number: @hive.bee_number,
+  status: @hive.status,
+  sensor_id: @hive.sensor_id,
+  success_rate: @hive.success_rate,
+}
