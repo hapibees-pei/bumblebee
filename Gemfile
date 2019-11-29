@@ -38,7 +38,7 @@ gem "rgeo-geojson"
 gem "hiredis", "~> 0.6.0"
 gem "redis", ">= 3.2.0", :require => ["redis", "redis/connection/hiredis"]
 gem "redis-objects"
-gem 'connection_pool', '~> 2.2', '>= 2.2.1'
+gem "connection_pool", "~> 2.2", ">= 2.2.1"
 
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", ">= 1.4.2", require: false
