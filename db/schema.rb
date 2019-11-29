@@ -17,12 +17,10 @@ ActiveRecord::Schema.define(version: 2019_11_27_151039) do
   enable_extension "plpgsql"
 
   create_table "apiaries", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.uuid "gateway_id"
     t.uuid "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.jsonb "location", default: "{}", null: false
-    t.index ["gateway_id"], name: "index_apiaries_on_gateway_id", unique: true
     t.index ["user_id"], name: "index_apiaries_on_user_id"
   end
 

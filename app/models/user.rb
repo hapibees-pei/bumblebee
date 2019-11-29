@@ -36,6 +36,8 @@ class User < ApplicationRecord
   #has_many :hives, through: :fundings
 
   after_create :add_beerole
+  # TODO: Remove this
+  after_create :create_apiary
 
   validates :name,
     length: { maximum: 200 }
@@ -47,6 +49,10 @@ class User < ApplicationRecord
   validate :valid_role
 
   private
+
+  def create_apiary
+    Apiary.create(user: self)
+  end
 
   def valid_role
     if !verify_role?(self.role)
