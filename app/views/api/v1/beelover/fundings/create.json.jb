@@ -1,0 +1,6 @@
+json = {
+  user_id: @funding.user_id,
+  hive_id: @funding.hive_id,
+  price_cents: @funding.price_cents,
+  status: @funding.status
+}

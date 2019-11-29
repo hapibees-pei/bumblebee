@@ -1,0 +1,18 @@
+json = {
+  hives: []
+}
+
+@hives.each do |h|
+  j = {
+    id: h.id,
+    name: h.name,
+    description: h.description,
+    bee_number: h.bee_number,
+    status: h.status,
+    sensor_id: h.sensor_id,
+    success_rate: h.success_rate,
+  }
+  json[:hives].push(j)
+end
+
+json

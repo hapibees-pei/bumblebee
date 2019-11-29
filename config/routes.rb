@@ -19,7 +19,10 @@ Rails.application.routes.draw do
           resources :hives, only: [:index, :create, :show, :update, :destroy]
         end
       end
+
       namespace :beelover do
+        resources :hives, only: [:index, :show]
+        resources :fundings, only: [:index, :create]
       end
     end
   end
