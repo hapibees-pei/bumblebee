@@ -16,8 +16,14 @@
 #
 
 class Apiary < ApplicationRecord
+  include Redis::Objects
+
   has_many :hives
   belongs_to :user
+
+  redis_id_field :gateway_id
+
+  value :status
 
   validates :location, presence: true
 end
