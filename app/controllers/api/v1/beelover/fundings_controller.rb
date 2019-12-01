@@ -5,13 +5,14 @@ module Api
         before_action :authenticate_bee!
 
         def index
-          @fundings = Funding.where(:user_id => current_user)
+          @fundings = policy_scope(Funding)
         end
 
         def create
           @funding = Funding.new(funding_params)
           @funding.status = :pending
           @funding.user_id = current_user.id
+          authorize @funding
 
           if @funding.save
             render status: :created

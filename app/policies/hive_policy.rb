@@ -1,14 +1,14 @@
 class HivePolicy < ApplicationPolicy
   def create?
-    user.has_role?(:beekeeper)
+    user.has_role?(:beekeeper) && (Apiary.find(record.apiary_id).user_id == user.id)
   end
 
   def update?
-    user.has_role?(:beekeeper)
+    user.has_role?(:beekeeper) && (Apiary.find(record.apiary_id).user_id == user.id)
   end
 
   def destroy?
-    user.has_role?(:beekeeper)
+    user.has_role?(:beekeeper) && (Apiary.find(record.apiary_id).user_id == user.id)
   end
 
   class Scope < Scope
