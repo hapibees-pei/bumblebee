@@ -1,14 +1,12 @@
 require "rails_helper"
 
 RSpec.describe "Beekeeper Hives API", type: :request do
-  let!(:user) { create(:user) }
-  let!(:apiary) { create(:apiary, user_id: user.id) }
+  let!(:beekeeper) { create(:user, role: "beekeeper") }
+  let!(:apiary) { create(:apiary, user_id: beekeeper.id) }
   let(:apiary_id) { apiary.id }
   let!(:hives) { create_list(:hive, 10, apiary_id: apiary.id) }
   let(:hive_id) { hives.first.id }
-  let(:headers) { authenticated_header(user) }
-
-  before { user.add_role(:beekeeper) }
+  let(:headers) { authenticated_header(beekeeper) }
 
   describe "GET /hives" do
     before { get "/api/v1/beekeeper/apiaries/#{apiary_id}/hives", params: {}, headers: headers }

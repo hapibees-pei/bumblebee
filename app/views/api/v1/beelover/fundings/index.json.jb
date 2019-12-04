@@ -1,0 +1,15 @@
+json = {
+  fundings: []
+}
+
+@fundings.each do |f|
+  j = {
+    user_id: f.user_id,
+    hive_id: f.hive_id,
+    price_cents: f.price_cents,
+    status: f.status
+  }
+  json[:fundings].push(j)
+end
+
+json

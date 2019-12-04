@@ -6,7 +6,7 @@ module Api
 
         def index
           @apiary = Apiary.find(params[:apiary_id])
-          @hives = @apiary.hives
+          @hives = policy_scope(@apiary.hives)
         end
 
         def create
