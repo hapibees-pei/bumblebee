@@ -8,6 +8,8 @@ module Api
     def authenticate_bee!
       unless current_user
         unauthorized
+      else
+        true
       end
     end
   end
