@@ -43,7 +43,7 @@ module Api
         private
 
         def hive_params
-          params.require(:hive).permit(:name, :description, :bee_number, :sensor_id, :status, :success_rate)
+          params.require(:hive).permit(:name, :description, :bee_number, :sensor_id)
         end
       end
     end
