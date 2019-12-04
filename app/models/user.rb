@@ -51,7 +51,9 @@ class User < ApplicationRecord
   private
 
   def create_apiary
-    Apiary.create(user: self)
+    if self.has_role(:beekeeper)
+      Apiary.create(user: self)
+    end
   end
 
   def valid_role
