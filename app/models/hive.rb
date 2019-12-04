@@ -19,8 +19,12 @@
 #
 
 class Hive < ApplicationRecord
+  include Redis::Objects
+
   has_many :fundings
   belongs_to :apiary
 
   enum status: { healthy: 0, perished: 1 }
+
+  value :sensor_data
 end
