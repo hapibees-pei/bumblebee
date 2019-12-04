@@ -24,7 +24,7 @@ module Api
         private
 
         def funding_params
-          params.require(:funding).permit(:hive_id, :price_cents)
+          params.require(:funding).permit(:hive_id, :price)
         end
       end
     end

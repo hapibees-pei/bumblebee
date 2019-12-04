@@ -14,7 +14,7 @@ class HivePolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
       if user.has_role?(:beelover)
-        scope.all
+        scope.where(status: :healthy)
       elsif user.has_role?(:beekeeper)
         apiaries = user.apiaries
         scope.where(apiary_id: apiaries.map(&:id))

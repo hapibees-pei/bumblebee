@@ -5,7 +5,7 @@ module Api
         before_action :authenticate_bee!
 
         def index
-          @hives = Hive.where(:status => :healthy)
+          @hives = policy_scope(Hive)
         end
 
         def show
