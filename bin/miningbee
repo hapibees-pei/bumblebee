@@ -1,3 +1,3 @@
 #!/usr/bin/env sh
 
-cd ./miningbee && bin/server
+cd ../miningbee && bin/server
