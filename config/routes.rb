@@ -24,6 +24,8 @@ Rails.application.routes.draw do
         resources :hives, only: [:index, :show]
         resources :fundings, only: [:index, :create]
       end
+
+      resources :profile, only: :index
     end
   end
 
