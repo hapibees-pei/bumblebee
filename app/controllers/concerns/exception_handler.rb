@@ -12,15 +12,19 @@ module ExceptionHandler
   end
 
   def unprocessable_entity
-    json_response("api/v1/errors/unprocessable_entity", :unprocessable_entity)
+    json_response("api/v1/errors/unprocessable_entity.json", :unprocessable_entity)
   end
 
   def not_found
-    json_response("api/v1/errors/not_found", :not_found)
+    json_response("api/v1/errors/not_found.json", :not_found)
   end
 
   def unauthorized
-    json_response("api/v1/errors/unauthorized", :unauthorized)
+    json_response("api/v1/errors/unauthorized.json", :unauthorized)
+  end
+
+  def bad_request
+    json_response("api/v1/errors/bad_request.json", :bad_request)
   end
 
   private

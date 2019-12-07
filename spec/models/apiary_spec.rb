@@ -7,6 +7,8 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  location   :jsonb            default("\"{}\""), not null
+#  ip         :string           default(""), not null
+#  port       :integer          not null
 #
 # Indexes
 #

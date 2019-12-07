@@ -39,6 +39,8 @@ gem "hiredis", "~> 0.6.0"
 gem "redis", ">= 3.2.0", :require => ["redis", "redis/connection/hiredis"]
 gem "redis-objects"
 gem "connection_pool", "~> 2.2", ">= 2.2.1"
+gem "sidekiq"
+gem "httparty"
 
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", ">= 1.4.2", require: false
@@ -47,6 +49,7 @@ group :development, :test do
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
   gem "awesome_print"
   gem "rspec-rails", "~> 3.9"
+  gem "pry", "~> 0.12.2"
 end
 
 group :development do

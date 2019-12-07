@@ -7,6 +7,8 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  location   :jsonb            default("\"{}\""), not null
+#  ip         :string           default(""), not null
+#  port       :integer          not null
 #
 # Indexes
 #
@@ -21,5 +23,7 @@ class Apiary < ApplicationRecord
 
   value :status
 
-  validates :location, presence: true
+  #validates :location, presence: true
+  validates :ip, presence: true
+  validates :port, presence: true
 end

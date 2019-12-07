@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
       namespace :beekeeper do
-        resources :apiaries, only: [:index] do
+        resources :apiaries, only: [:index, :create] do
           resources :hives, only: [:index, :create, :show, :update, :destroy]
         end
       end
