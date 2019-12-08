@@ -4,6 +4,7 @@ class Api::Auth::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
   respond_to :json
   protect_from_forgery unless: -> { request.format.json? }
+  after_action -> { request.session_options[:skip] = true }
 
   # GET /resource/sign_in
   # def new
