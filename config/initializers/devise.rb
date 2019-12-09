@@ -307,6 +307,7 @@ Devise.setup do |config|
     #]
     #jwt.expiration_time = 1.day.to_i
     #jwt.request_formats = { user: [:json] }
+    jwt.expiration_time = 1.month.to_i
   end
 
   #config.navigational_formats = ['*/*', :html, :json]

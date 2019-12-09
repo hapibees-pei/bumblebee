@@ -5,6 +5,7 @@ class Api::Auth::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_account_update_params, only: [:update]
   respond_to :json
   protect_from_forgery unless: -> { request.format.json? }
+  after_action -> { request.session_options[:skip] = true }
 
   # GET /resource/sign_up
   # def new
