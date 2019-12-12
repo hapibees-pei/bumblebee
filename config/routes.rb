@@ -29,5 +29,15 @@ Rails.application.routes.draw do
     end
   end
 
+  devise_for :admin_users
+  
+  namespace :admin do
+    resources :users, only: [:index, :show, :edit, :update]
+    resources :apiaries, only: [:index, :show]
+    resources :hives, only: [:index, :show]
+
+    root to: "users#index"
+  end
+
   root to: "page#index", defaults: { format: :json }
 end

@@ -42,6 +42,8 @@ gem "connection_pool", "~> 2.2", ">= 2.2.1"
 gem "sidekiq"
 gem "httparty"
 
+gem "administrate"
+
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", ">= 1.4.2", require: false
 
