@@ -26,5 +26,9 @@ class Hive < ApplicationRecord
 
   enum status: { healthy: 0, perished: 1 }
 
-  value :sensor_data
+  #value :sensor_data
+
+  def sensor_data
+    Hive.redis.get("apiary:#{self.apiary.id}/sensor:#{self.sensor_id}")
+  end
 end
