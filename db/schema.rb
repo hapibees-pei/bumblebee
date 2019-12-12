@@ -42,12 +42,12 @@ ActiveRecord::Schema.define(version: 2019_12_11_160632) do
     t.string "name", default: ""
     t.text "description"
     t.integer "bee_number"
-    t.uuid "sensor_id"
     t.integer "status", default: 0
     t.integer "success_rate", default: 0
     t.uuid "apiary_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "sensor_id"
     t.index ["apiary_id"], name: "index_hives_on_apiary_id"
   end
 

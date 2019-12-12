@@ -5,11 +5,20 @@ module Api
 
       def show
         sensor_type = params[:sensor_type]
-        hive_uuid = params[:hive_uuid]
-        time_unity = params[:time_unity]
+        @hive = Hive.find(params[:hive_id])
+        sensor_id = @hive.sensor_id
+        apiary_id=params[:id]
 
-        url_options = "/api/v1/readings?query=#{sensor_type}&hive_id=#{hive_uuid}&group=#{time_unity}"
+        if params[:time_unity]
+          time_unity = params[:time_unity]
+          url_options = "/api/v1/readings?query=#{sensor_type}&apiary_id=#{apiary_id}&hive_id=#{sensor_id}&group=#{time_unity}"
+        else
+          url_options = "/api/v1/readings?query=#{sensor_type}&apiary_id=#{apiary_id}&hive_id=#{sensor_id}"
+        end
+
         @response = HTTParty.get(Rails.application.credentials.iot_url + url_options)
+
+        render json: @response.parsed_response, status: :ok
       end
     end
   end
