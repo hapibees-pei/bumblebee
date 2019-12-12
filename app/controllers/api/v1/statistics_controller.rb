@@ -7,7 +7,7 @@ module Api
         sensor_type = params[:sensor_type]
         @hive = Hive.find(params[:hive_id])
         sensor_id = @hive.sensor_id
-        apiary_id=params[:id]
+        apiary_id = params[:id]
 
         if params[:time_unity]
           time_unity = params[:time_unity]
@@ -18,7 +18,7 @@ module Api
 
         @response = HTTParty.get(Rails.application.credentials.iot_url + url_options)
 
-        render json: @response.parsed_response, status: :ok
+        render status: @response.code
       end
     end
   end
