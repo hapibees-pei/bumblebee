@@ -1,0 +1,8 @@
+#!/usr/bin/env sh
+docker_state=$(docker info >/dev/null 2>&1)
+if [[ $? -ne 0 ]]; then
+  echo "Docker does not seem to be running, run it first and retry"
+  exit 1
+fi
+docker-compose up -d
+foreman start -f Procfile.dev
