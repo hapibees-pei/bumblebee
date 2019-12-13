@@ -6,12 +6,12 @@
 #  name         :string           default("")
 #  description  :text
 #  bee_number   :integer
-#  sensor_id    :uuid
 #  status       :integer          default("0")
 #  success_rate :integer          default("0")
 #  apiary_id    :uuid
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
+#  sensor_id    :integer
 #
 # Indexes
 #
