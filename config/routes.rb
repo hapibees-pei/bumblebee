@@ -26,7 +26,10 @@ Rails.application.routes.draw do
       end
 
       resources :profile, only: :index
-      resources :statistics, only: :show
+
+      resources :apiaries do
+        resources :statistics, only: :show
+      end
     end
   end
 
