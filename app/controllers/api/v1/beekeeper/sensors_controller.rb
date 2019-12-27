@@ -2,7 +2,7 @@ module Api
   module V1
     module Beekeeper
       class SensorsController < Api::ApplicationController
-        before_action :authenticate_user!
+        before_action :authenticate_bee!
 
         def index
           @apiary = Apiary.find(params[:apiary_id])

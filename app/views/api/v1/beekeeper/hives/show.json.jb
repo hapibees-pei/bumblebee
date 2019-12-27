@@ -6,4 +6,5 @@ json = {
   status: @hive.status,
   sensor_id: @hive.sensor_id,
   success_rate: @hive.success_rate,
+  fundings: @hive.fundings
 }
