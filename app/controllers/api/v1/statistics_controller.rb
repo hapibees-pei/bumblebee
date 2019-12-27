@@ -4,7 +4,7 @@ module Api
       before_action :authenticate_bee!
 
       def show
-        statistics = StatisticsIntegration::Readings.new(params)
+        statistics = Statistics::Readings.new(params)
         @response = statistics.call
 
         render status: @response.code
