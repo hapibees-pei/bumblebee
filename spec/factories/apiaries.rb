@@ -18,7 +18,7 @@
 FactoryBot.define do
   factory :apiary do
     id { SecureRandom.uuid }
-    gateway_id { SecureRandom.uuid }
-    location { Faker::Lorem.word }
+    ip { "127.0.0.1" }
+    port { 9999 }
   end
 end
