@@ -9,6 +9,7 @@
 #  location   :jsonb            default("\"{}\""), not null
 #  ip         :string           default(""), not null
 #  port       :integer          not null
+#  name       :string           default(""), not null
 #
 # Indexes
 #

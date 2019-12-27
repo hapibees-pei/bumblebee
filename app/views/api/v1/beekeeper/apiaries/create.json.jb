@@ -1,5 +1,6 @@
 json = {
   id: @apiary.id,
   location: @apiary.location,
-  status: @apiary.status
+  status: @apiary.status,
+  name: @apiary.name
 }

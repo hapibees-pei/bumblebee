@@ -9,6 +9,7 @@
 #  location   :jsonb            default("\"{}\""), not null
 #  ip         :string           default(""), not null
 #  port       :integer          not null
+#  name       :string           default(""), not null
 #
 # Indexes
 #
@@ -20,5 +21,6 @@ FactoryBot.define do
     id { SecureRandom.uuid }
     ip { "127.0.0.1" }
     port { 9999 }
+    name { Faker::Lorem.word }
   end
 end

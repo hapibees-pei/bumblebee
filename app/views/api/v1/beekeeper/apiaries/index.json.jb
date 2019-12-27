@@ -4,7 +4,8 @@ json = {
 @apiaries.each do |a|
   j = {
     id: a.id,
-    location: a.location
+    location: a.location,
+    name: a.name
   }
   json[:apiaries].push(j)
 end

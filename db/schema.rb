@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_12_165002) do
+ActiveRecord::Schema.define(version: 2019_12_27_161452) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(version: 2019_12_12_165002) do
     t.jsonb "location", default: "{}", null: false
     t.string "ip", default: "", null: false
     t.integer "port", null: false
+    t.string "name", default: "", null: false
     t.index ["user_id"], name: "index_apiaries_on_user_id"
   end
 

@@ -24,7 +24,7 @@ module Api
         private
 
         def apiary_params
-          params.require(:apiary).permit(:location, :ip, :port)
+          params.require(:apiary).permit(:location, :ip, :port, :name)
         end
       end
     end
