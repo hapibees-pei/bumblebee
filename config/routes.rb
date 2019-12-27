@@ -17,6 +17,8 @@ Rails.application.routes.draw do
       namespace :beekeeper do
         resources :apiaries, only: [:index, :create] do
           resources :hives, only: [:index, :create, :show, :update, :destroy]
+
+          resources :sensors, only: :index
         end
       end
 
@@ -34,7 +36,7 @@ Rails.application.routes.draw do
   end
 
   devise_for :admin_users
-  
+
   namespace :admin do
     resources :users, only: [:index, :show, :edit, :update]
     resources :apiaries, only: [:index, :show]

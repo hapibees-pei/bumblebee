@@ -1,0 +1,4 @@
+json = {
+  apiary_id: @apiary.id,
+  sensors: @diff
+}
