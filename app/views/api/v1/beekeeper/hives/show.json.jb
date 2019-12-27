@@ -1,3 +1,17 @@
+array = []
+completed_fundings = @hive.fundings.where(status: :completed)
+
+completed_fundings.each do |f|
+  j = {
+    id: f.id,
+    price_cents: f.price_cents,
+    price_currency: f.price_currency,
+    user_name: f.user.name
+  }
+
+  array.push(j)
+end
+
 json = {
   id: @hive.id,
   name: @hive.name,
@@ -6,5 +20,5 @@ json = {
   status: @hive.status,
   sensor_id: @hive.sensor_id,
   success_rate: @hive.success_rate,
-  fundings: @hive.fundings
+  fundings: array
 }
