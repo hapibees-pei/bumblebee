@@ -1,0 +1,4 @@
+#!/usr/bin/env sh
+export DISABLE_SPRING=true
+
+bundle exec rails console
