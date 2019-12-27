@@ -21,6 +21,8 @@ FileUtils.chdir APP_ROOT do
   system! 'gem install bundler --conservative'
   system('bundle check') || system!('bundle install')
 
+  system! 'gem install foreman'
+
   # Install JavaScript dependencies
   system('bin/yarn')
 
