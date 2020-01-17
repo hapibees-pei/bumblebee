@@ -1,9 +1,9 @@
 module Statistics
   class Readings
     def initialize(params = {})
-      new_params = params.slice(:query, :time_unity, :apiary_id, :id)
+      new_params = params.slice(:query, :group, :apiary_id, :id)
       @params = sanitizer_params(new_params)
-        .permit(:query, :time_unity, :apiary_id, :hive_id).to_h
+        .permit(:query, :group, :apiary_id, :hive_id).to_h
     end
 
     def sanitizer_params(params)
@@ -11,7 +11,7 @@ module Statistics
       params[:hive_id] = hive.sensor_id
 
       params.delete(:id)
-      params.delete(:time_unity) if !params[:time_unity]
+      params.delete(:group) if !params[:group]
 
       validate_params(params)
     end
@@ -20,8 +20,8 @@ module Statistics
       params[:query] = valid_query(params[:query])
       params[:apiary_id] = valid_uuid_format(params[:apiary_id])
 
-      if params[:time_unity]
-        params[:time_unity] = valid_time_unity(params[:time_unity])
+      if params[:group]
+        params[:group] = valid_group(params[:group])
       end
 
       params
@@ -45,10 +45,10 @@ module Statistics
       end
     end
 
-    def valid_time_unity(time_unity)
-      time_unity_options = %w(minute hour day)
-      if time_unity_options.include?(time_unity)
-        time_unity
+    def valid_group(group)
+      group_options = %w(minute hour day)
+      if group_options.include?(group)
+        group
       else
         raise ActiveRecord::RecordInvalid
       end
