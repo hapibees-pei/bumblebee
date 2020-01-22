@@ -1,0 +1,14 @@
+h = Hive.find(@funding.hive_id)
+
+json = {
+  id: h.id,
+  hive_name: h.name,
+  hive_description: h.description,
+  hive_bee_number: h.bee_number,
+  hive_status: h.status,
+  hive_sensor_id: h.sensor_id,
+  hive_success_rate: h.success_rate,
+  user_name: @funding.user.name,
+  price: humanized_money_with_symbol(@funding.price),
+  funding_status: @funding.status
+}

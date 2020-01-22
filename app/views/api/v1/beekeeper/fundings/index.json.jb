@@ -1,0 +1,18 @@
+json = {
+  fundings: []
+}
+
+@fundings.each do |f|
+  h = Hive.find(f.hive_id)
+
+  j = {
+    id: f.id,
+    hive_name: h.name,
+    price: humanized_money_with_symbol(f.price),
+    user: f.user.name
+  }
+
+  json[:fundings].push(j)
+end
+
+json

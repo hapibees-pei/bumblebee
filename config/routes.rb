@@ -17,7 +17,7 @@ Rails.application.routes.draw do
       namespace :beekeeper do
         resources :apiaries, only: [:index, :create] do
           resources :hives, only: [:index, :create, :show, :update, :destroy]
-
+          resources :fundings, only: [:index, :show]
           resources :sensors, only: :index
         end
       end

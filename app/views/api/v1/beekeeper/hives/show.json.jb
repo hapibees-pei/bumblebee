@@ -4,8 +4,7 @@ completed_fundings = @hive.fundings.where(status: :completed)
 completed_fundings.each do |f|
   j = {
     id: f.id,
-    price_cents: f.price_cents,
-    price_currency: f.price_currency,
+    price: humanized_money_with_symbol(f.price_cents),
     user_name: f.user.name
   }
 
