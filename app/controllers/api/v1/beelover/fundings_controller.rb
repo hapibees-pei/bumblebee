@@ -10,7 +10,7 @@ module Api
 
         def create
           @funding = Funding.new(funding_params)
-          @funding.status = :pending
+          @funding.status = :completed
           @funding.user_id = current_user.id
           authorize @funding
 
