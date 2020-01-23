@@ -9,6 +9,6 @@ json = {
   hive_sensor_id: h.sensor_id,
   hive_success_rate: h.success_rate,
   user_name: @funding.user.name,
-  price: humanized_money_with_symbol(@funding.price),
+  price: @funding.price_cents,
   funding_status: @funding.status
 }

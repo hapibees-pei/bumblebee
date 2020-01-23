@@ -8,7 +8,7 @@ json = {
   j = {
     id: f.id,
     hive_name: h.name,
-    price: humanized_money_with_symbol(f.price),
+    price: f.price_cents,
     user: f.user.name
   }
 
